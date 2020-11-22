@@ -1,3 +1,39 @@
-.someClass {
-
+.hw2 {
+    padding: 50px;
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
 }
+
+.affairsList {
+    margin: 0 auto;
+    width: 200px;
+}
+
+.affairItem {
+    display: flex;
+    align-items: center;
+}
+
+.affair {
+    margin: 2px auto 2px 15px;
+}
+
+.xButton {
+    margin-right: 5px;
+    height: 22px;
+}
+
+.filters {
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 220px;
+    display: flex;
+}
+
+.filterButton {
+    width: 100px;
+    margin: 1px;
+}
+
+

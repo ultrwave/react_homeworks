@@ -21,7 +21,7 @@ export const filterAffairs = (affairs: Array<AffairType>, filter: FilterType): A
     else if (filter === 'high') return affairs.filter(a => a.priority === 'high');
     else if (filter === 'middle') return affairs.filter(a => a.priority === 'middle');
     else if (filter === 'low') return affairs.filter(a => a.priority === 'low');
-    else return affairs // Без этого else TS ругался на undefined
+    else return affairs
 }
 export const deleteAffair = (affairs: Array<AffairType>, _id: number): Array<AffairType> => {
     return affairs.filter(a => a._id !== _id)

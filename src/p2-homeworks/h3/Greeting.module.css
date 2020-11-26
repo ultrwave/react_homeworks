@@ -1,5 +1,19 @@
-.someClass {
+.greeting {
+    display: flex;
+    justify-content: center;
+}
 
+.greeting > * {
+    padding: 2px;
+    margin: 45px 5px 45px 0;
+}
+
+.inputValid {
+    background-color: green;
+}
+
+.inputError {
+    background-color: red;
 }
 
 .error {

@@ -1,26 +1,40 @@
-import React from "react";
-import s from "./Greeting.module.css";
+import React, {ChangeEvent, createRef, KeyboardEvent} from 'react';
+import s from './Greeting.module.css';
 
 type GreetingPropsType = {
-    name: any // need to fix any
-    setNameCallback: any // need to fix any
-    addUser: any // need to fix any
-    error: any // need to fix any
-    totalUsers: any // need to fix any
+    name: string
+    setNameCallback: (e: ChangeEvent<HTMLInputElement>) => void // ???
+    onKeyPressHandler: (e: KeyboardEvent<HTMLInputElement>) => void
+    addUser: () => void
+    error: boolean
+    totalUsers: number
 }
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
-    {name, setNameCallback, addUser, error, totalUsers} // деструктуризация пропсов
+    {name, setNameCallback, onKeyPressHandler, addUser, error, totalUsers}
 ) => {
-    const inputClass = s.error ? 's.inputError' : 's.inputValid'// need to fix with (?:)
+    const inputClass = error ? s.inputError : s.inputValid
+
+    const inputRef = createRef<HTMLInputElement>()
+
+
 
     return (
         <div className={s.greeting}>
-            <input value={name} onChange={setNameCallback} className={inputClass}/>
-            <span>{error}</span>
-            <button onClick={addUser}>add</button>
+            <input
+                // autoFocus={true} не работает
+                value={name}
+                onChange={setNameCallback}
+                onKeyPress={onKeyPressHandler}
+                className={`${inputClass} ${s.nameInput}`}
+                ref={inputRef}
+            />
+            <button onClick={addUser(inputRef)}>add</button>
             <span>{totalUsers}</span>
+            <div>
+                {/*<span>{error.toString()}</span> /!* поправить *!/*/}
+            </div>
         </div>
     );
 }
